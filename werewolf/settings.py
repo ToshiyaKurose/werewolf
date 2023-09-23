@@ -30,7 +30,8 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = [env("DOMAIN")]
+DOMAIN = env("DOMAIN")
+ALLOWED_HOSTS = [DOMAIN]
 
 
 # Application definition
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_bootstrap5",
+    "django_boost",
     "accounts.apps.AccountsConfig",
 ]
 
@@ -60,7 +63,7 @@ ROOT_URLCONF = "werewolf.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ["templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -111,6 +114,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # ユーザー
 AUTH_USER_MODEL = "accounts.User"
+
+# メール関連
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = env("EMAIL_USE_TLS")
+
+ACTIVATION_EXPIRED_HOURS = 3
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

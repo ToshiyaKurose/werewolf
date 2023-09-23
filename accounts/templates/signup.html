@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}新規アカウント登録{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        {% bootstrap_button button_type="submit" content="登録" %}
+    </form>
+{% endblock %}
