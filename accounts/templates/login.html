@@ -5,17 +5,25 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <p>ログイン済です。</p>
+        <main class="flex-shrink-0">
+            <div class="container py-4 text-center">
+                <p>ログイン済です。</p>
+                <a class="btn btn-primary" href="/">トップページへ</a>
+            </div>
+        </main>
     {% else %}
-    <form method="post">
-        {% bootstrap_form form %}
-        {% csrf_token %}
-        {% if next %}
-            <input type="hidden" name="next" value="{{ next }}">
-        {% else %}
-            <input type="hidden" name="next" value="/">
-        {% endif %}
-        {% bootstrap_button button_type="submit" content="ログイン" %}
-    </form>
+        <main class="form-signin w-100 m-auto d-flex align-items-center py-4 bg-body-tertiary justify-content-center">
+            <form method="post">
+                <h1 class="h3 mb-3 fw-normal">ログイン</h1>
+                {% bootstrap_form form %}
+                {% csrf_token %}
+                {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                {% else %}
+                    <input type="hidden" name="next" value="/">
+                {% endif %}
+                {% bootstrap_button button_type="submit" content="ログイン" %}
+            </form>
+        </main>
     {% endif %}
 {% endblock %}
