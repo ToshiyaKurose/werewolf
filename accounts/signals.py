@@ -14,7 +14,7 @@ def publish_activate_token(sender, instance, created, **kwargs):
             expired_at=make_aware(datetime.now()) + timedelta(hours=settings.ACTIVATION_EXPIRED_HOURS),
         )
         subject = "メールアドレスを確認してください - 暁の人狼"
-        message = f"以下のリンクにアクセスしてメールアドレスを確認してください。\n https://{settings.DOMAIN}/account/activation/{user_activate_token.activate_token}/\n\n 心当たりのない方は、このメールを無視してください。"
+        message = f"以下のリンクにアクセスしてメールアドレスを確認してください。\nhttps://{settings.DOMAIN}/account/activation/{user_activate_token.activate_token}/\nリンクは発行後3時間有効です。\n\n心当たりのない方は、このメールを無視してください。"
         from_email = settings.DEFAULT_FROM_EMAIL
         recipient_list = [
             instance.email,

@@ -33,6 +33,6 @@ def signup_complete(request, activate_token):
     else:
         context = {
             "title": "エラーが発生しました",
-            "message": "エラーが発生しました",
+            "message": "URLが正しくありません。",
         }
     return render(request, "signup_complete.html", context=context)
