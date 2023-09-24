@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView
-from .forms import Signup
+from django.contrib.auth import views as auth_views
+from .forms import SignupForm, LoginForm
 from .models import UserActivateTokens
 from django.urls import reverse_lazy
 
 class Signup(CreateView):
-    form_class = Signup
+    form_class = SignupForm
     template_name = "signup.html"
     success_url = reverse_lazy("accounts:signup_email")
 
@@ -36,3 +37,7 @@ def signup_complete(request, activate_token):
             "message": "URLが正しくありません。",
         }
     return render(request, "signup_complete.html", context=context)
+
+class Login(auth_views.LoginView):
+    template_name = "login.html"
+    form_class = LoginForm

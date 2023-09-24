@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}ログイン{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>ログイン済です。</p>
+    {% else %}
+    <form method="post">
+        {% bootstrap_form form %}
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{ next }}">
+        {% else %}
+            <input type="hidden" name="next" value="/">
+        {% endif %}
+        {% bootstrap_button button_type="submit" content="ログイン" %}
+    </form>
+    {% endif %}
+{% endblock %}
