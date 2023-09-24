@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "django_boost",
+    "hcaptcha_field",
     "accounts.apps.AccountsConfig",
 ]
 
@@ -125,6 +126,12 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = env("EMAIL_USE_TLS")
 
 ACTIVATION_EXPIRED_HOURS = 3
+
+# キャプチャ
+
+HCAPTCHA_SITEKEY = env("HCAPTCHA_SITEKEY")
+HCAPTCHA_SECRET = env("HCAPTCHA_SECRET")
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

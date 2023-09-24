@@ -3,6 +3,7 @@ Django==4.2.5
 django-boost==2.1
 django-bootstrap5==23.3
 django-environ==0.11.2
+django-hcaptcha-field==1.4.0
 psycopg2-binary==2.9.7
 sqlparse==0.4.4
 typing_extensions==4.7.1
