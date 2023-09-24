@@ -1,10 +1,15 @@
 asgiref==3.7.2
+async-timeout==4.0.3
+channels==4.0.0
+channels-redis==4.1.0
 Django==4.2.5
 django-boost==2.1
 django-bootstrap5==23.3
 django-environ==0.11.2
 django-hcaptcha-field==1.4.0
+msgpack==1.0.6
 psycopg2-binary==2.9.7
+redis==5.0.0
 sqlparse==0.4.4
 typing_extensions==4.7.1
 ua-parser==0.18.0

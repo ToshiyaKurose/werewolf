@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django_boost",
     "hcaptcha_field",
     "accounts.apps.AccountsConfig",
+    "channels",
 ]
 
 MIDDLEWARE = [
@@ -78,6 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "werewolf.wsgi.application"
+ASGI_APPLICATION = "werewolf.asgi.application"
 
 
 # Database
@@ -132,6 +134,16 @@ ACTIVATION_EXPIRED_HOURS = 3
 HCAPTCHA_SITEKEY = env("HCAPTCHA_SITEKEY")
 HCAPTCHA_SECRET = env("HCAPTCHA_SECRET")
 
+# WebSocket
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [(env("REDIS_HOST"), env("REDIS_PORT"))],
+        },
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
