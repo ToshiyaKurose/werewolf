@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, TemplateView
 from django.contrib.auth import views as auth_views
-from .forms import SignupForm, LoginForm
+from .forms import SignupForm, LoginForm, PasswordResetForm
 from .models import UserActivateTokens
 from django.urls import reverse_lazy
 
@@ -44,3 +44,20 @@ class Login(auth_views.LoginView):
 
 class Logout(auth_views.LogoutView):
     template_name = "logout.html"
+
+class PasswordReset(auth_views.PasswordResetView):
+    template_name = "password_reset.html"
+    form_class = PasswordResetForm
+    success_url = reverse_lazy("accounts:password_reset_done")
+    email_template_name = "password_reset_email.txt"
+    subject_template_name = "password_reset_subject.txt"
+
+class PasswordResetDone(auth_views.PasswordResetDoneView):
+    template_name = "password_reset_sent.html"
+
+class PasswordResetConfirm(auth_views.PasswordResetConfirmView):
+    template_name = "password_reset_form.html"
+    success_url = reverse_lazy("accounts:password_reset_complete")
+
+class PasswordResetComplete(auth_views.PasswordResetCompleteView):
+    template_name = "password_reset_done.html"

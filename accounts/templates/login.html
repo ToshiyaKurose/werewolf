@@ -23,6 +23,8 @@
                     <input type="hidden" name="next" value="/">
                 {% endif %}
                 {% bootstrap_button button_type="submit" content="ログイン" %}
+                <br><br>
+                <a href="{% url 'accounts:password_reset' %}">ユーザー名・パスワードを忘れた方はこちら</a>
             </form>
         </main>
     {% endif %}
