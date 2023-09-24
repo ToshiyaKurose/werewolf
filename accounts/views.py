@@ -41,3 +41,6 @@ def signup_complete(request, activate_token):
 class Login(auth_views.LoginView):
     template_name = "login.html"
     form_class = LoginForm
+
+class Logout(auth_views.LogoutView):
+    template_name = "logout.html"
