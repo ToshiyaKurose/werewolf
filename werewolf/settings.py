@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "hcaptcha_field",
     "accounts.apps.AccountsConfig",
     "channels",
+    "chat.apps.ChatConfig",
 ]
 
 MIDDLEWARE = [
